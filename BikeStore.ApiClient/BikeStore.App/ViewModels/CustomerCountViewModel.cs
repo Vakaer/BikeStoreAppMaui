@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using BikeStore.ApiClient.ApiClients.Interfaces;
 using BikeStore.Data.Model;
-using ThreadNetwork;
+using Refit;
 
 
 namespace BikeStore.App.ViewModels
@@ -26,30 +26,38 @@ namespace BikeStore.App.ViewModels
         #endregion
 
         #region Commands 
-        //public ICommand SeeTotalCustomersFromEachCity => new Command(GetCustomersCount);
+        public ICommand SeeTotalCustomersFromEachCity => new Command(GetCustomersCount);
 
 
 
         #endregion
-       
+
+        #region Get Set
+        ObservableCollection<CustomerCountFromEachCity> Customers { get; set; } = new ObservableCollection<CustomerCountFromEachCity>();
+        #endregion
+
+        #region constructor
         public CustomerCountViewModel(ICustomerApiClient customerApiClient)
         {
             _customerApiClient = customerApiClient;
             GetCustomersCount();
         }
+        #endregion
 
         public async void GetCustomersCount()
         {
-            ObservableCollection<CustomerCountFromEachCity> customers = new ObservableCollection<CustomerCountFromEachCity>();
-
+             
+            
    
             try
             {
-                 var customerList =  _customerApiClient.GetCustomersCity();
+                List<CustomerCountFromEachCity> customerList =await _customerApiClient.GetCustomersCity();
                  if (customerList != null)
                 {
-                    string content = customerList.ToString();
-                    customers = JsonSerializer.Deserialize<ObservableCollection<CustomerCountFromEachCity>>(content);
+                    foreach(var item in customerList) 
+                    { 
+                        Customers.Add(item);
+                    }
                 }
             }
             catch (Exception ex)
@@ -60,25 +68,9 @@ namespace BikeStore.App.ViewModels
             //return customers;
         }
 
-        ObservableCollection<CustomerCountFromEachCity> _customers;
 
-        public ObservableCollection<CustomerCountFromEachCity> Customers
-        {
-            get { return _customers; }
-            set
-            {
-                if (value != null)
-                {
-                    _customers = value;
-                    OnPropertyChanged();
-                }
-
-
-
-
-            }
-        }
         
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
