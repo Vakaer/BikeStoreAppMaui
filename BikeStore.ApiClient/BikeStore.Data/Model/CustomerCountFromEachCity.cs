@@ -8,7 +8,8 @@ namespace BikeStore.Data.Model
 {
     public class CustomerCountFromEachCity
     {
-        public int count { get; set; }
-        public string city { get; set; }
+        public int Count { get; set; }
+        public string CityChar { get; set; }
+        public string City { get; set; }
     }
 }

@@ -17,7 +17,7 @@ using Refit;
 
 namespace BikeStore.App.ViewModels
 {
-    public class CustomerCountViewModel : INotifyPropertyChanged
+    public class CustomerCountViewModel : BaseViewModel
     {
         #region private Properties
 
@@ -33,10 +33,28 @@ namespace BikeStore.App.ViewModels
         #endregion
 
         #region Get Set
-        ObservableCollection<CustomerCountFromEachCity> Customers { get; set; } = new ObservableCollection<CustomerCountFromEachCity>();
+
+        private ObservableCollection<CustomerCountFromEachCity> _customers = new ObservableCollection<CustomerCountFromEachCity>();
+        public ObservableCollection<CustomerCountFromEachCity> Customers
+        {
+            get
+            {
+                return _customers;
+            }
+            set
+            {
+                _customers = value;
+                OnPropertyChanged(nameof(Customers));
+            }
+        }
+
         #endregion
 
         #region constructor
+        //public CustomerCountViewModel()
+        //{
+        //    GetCustomersCount();
+        //}
         public CustomerCountViewModel(ICustomerApiClient customerApiClient)
         {
             _customerApiClient = customerApiClient;
@@ -46,18 +64,18 @@ namespace BikeStore.App.ViewModels
 
         public async void GetCustomersCount()
         {
-             
-            
-   
             try
             {
-                List<CustomerCountFromEachCity> customerList =await _customerApiClient.GetCustomersCity();
-                 if (customerList != null)
+                List<CustomerCountFromEachCity> customerList = await _customerApiClient.GetCustomersCity();
+                if (customerList != null)
                 {
-                    foreach(var item in customerList) 
-                    { 
+                    foreach (var item in customerList)
+                    {
+                        item.CityChar = item.City.Substring(0, 1);
                         Customers.Add(item);
+                         
                     }
+                    Debug.WriteLine(customerList);
                 }
             }
             catch (Exception ex)
@@ -68,13 +86,38 @@ namespace BikeStore.App.ViewModels
             //return customers;
         }
 
+        #region City name first Char 
+        private ObservableCollection<string> _cityChar = new ObservableCollection<string>();
+        public ObservableCollection<string> CityChar
+        {
+            get { return _cityChar; }
+            set
+            {
+                _cityChar = value;
+                OnPropertyChanged(nameof(CityChar));
+            }
+        }
+        public void GetFirstNameChar()
+        {
+            try
+            {
+                foreach (var item in _customers)
+                {
+                    var city = item.City;
+                    var res = city.Substring(0, 1);
+                    CityChar.Add(res);
+                }
+            }
+            catch(Exception ex) 
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+            
 
-        
+
+        }
+        #endregion
 
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged([CallerMemberName] string name = "") =>
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 }

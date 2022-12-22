@@ -10,8 +10,10 @@ namespace BikeStore.ApiClient.ApiClients
     {
         #region Private Properties
 
-        public const string Base_Url = @"http://10.0.2.2:5252";
-
+        //public const string Base_Url = "http://localhost:5252";
+        public const string Base_Url = "http://192.168.31.20:5252";
+        //public const string Base_Url = "http://10.0.2.2:5252";
+        
         #endregion
 
         #region Cosntructor

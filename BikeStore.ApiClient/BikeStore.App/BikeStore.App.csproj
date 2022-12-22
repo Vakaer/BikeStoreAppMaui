@@ -53,4 +53,10 @@
 	  <ProjectReference Include="..\BikeStore.Data\BikeStore.Data.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="Views\DemoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
