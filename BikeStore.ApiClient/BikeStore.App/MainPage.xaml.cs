@@ -9,7 +9,5 @@ namespace BikeStore.App
             InitializeComponent();
             BindingContext = customerCountViewModel;
         }
-
-       
     }
 }

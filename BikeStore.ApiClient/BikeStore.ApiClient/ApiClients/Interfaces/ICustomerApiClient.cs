@@ -11,5 +11,6 @@ namespace BikeStore.ApiClient.ApiClients.Interfaces
     public interface ICustomerApiClient
     {
         Task<List<CustomerCountFromEachCity>> GetCustomersCity();
+        Task<List<OrdersCustomersOrderItemsLeftJoin>> GetOrderCustomerAndOrderItemsLeftJoin();
     }
 }

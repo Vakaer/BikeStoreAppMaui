@@ -49,11 +49,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\flyoutphoto.png" />
+	  <None Remove="Resources\Images\logo.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="..\BikeStore.ApiClient\BikeStore.ApiClient.csproj" />
 	  <ProjectReference Include="..\BikeStore.Data\BikeStore.Data.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\Controls\FlyoutHeader.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\CustomersOrderDetails.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\DemoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

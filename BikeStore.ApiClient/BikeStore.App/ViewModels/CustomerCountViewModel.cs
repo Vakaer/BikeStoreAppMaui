@@ -48,13 +48,24 @@ namespace BikeStore.App.ViewModels
             }
         }
 
+        private ObservableCollection<OrdersCustomersOrderItemsLeftJoin> _ordersCustomersOrderItems = new ObservableCollection<OrdersCustomersOrderItemsLeftJoin>();
+        public ObservableCollection<OrdersCustomersOrderItemsLeftJoin> OrdersCustomersOrderItems
+        {
+            get
+            {
+                return _ordersCustomersOrderItems;
+            }
+            set
+            {
+                _ordersCustomersOrderItems = value;
+                OnPropertyChanged(nameof(OrdersCustomersOrderItems));
+            }
+        }
+
         #endregion
 
         #region constructor
-        //public CustomerCountViewModel()
-        //{
-        //    GetCustomersCount();
-        //}
+
         public CustomerCountViewModel(ICustomerApiClient customerApiClient)
         {
             _customerApiClient = customerApiClient;
@@ -62,6 +73,7 @@ namespace BikeStore.App.ViewModels
         }
         #endregion
 
+        #region Get customers count from each city - Method-1
         public async void GetCustomersCount()
         {
             try
@@ -86,38 +98,9 @@ namespace BikeStore.App.ViewModels
             //return customers;
         }
 
-        #region City name first Char 
-        private ObservableCollection<string> _cityChar = new ObservableCollection<string>();
-        public ObservableCollection<string> CityChar
-        {
-            get { return _cityChar; }
-            set
-            {
-                _cityChar = value;
-                OnPropertyChanged(nameof(CityChar));
-            }
-        }
-        public void GetFirstNameChar()
-        {
-            try
-            {
-                foreach (var item in _customers)
-                {
-                    var city = item.City;
-                    var res = city.Substring(0, 1);
-                    CityChar.Add(res);
-                }
-            }
-            catch(Exception ex) 
-            {
-                Debug.WriteLine(@"\tERROR {0}", ex.Message);
-            }
-            
-
-
-        }
-        #endregion
+       
 
 
     }
 }
+#endregion

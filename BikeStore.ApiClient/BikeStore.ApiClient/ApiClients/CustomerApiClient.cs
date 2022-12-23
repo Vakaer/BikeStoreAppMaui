@@ -34,6 +34,8 @@ namespace BikeStore.ApiClient.ApiClients
         }
 
         #endregion
+
+
         public async Task<List<CustomerCountFromEachCity>> GetCustomersCity()
         {
             try
@@ -42,6 +44,23 @@ namespace BikeStore.ApiClient.ApiClients
                     .For<ICustomerApi>(await GetHttpClient())
                     .GetCustomersCity();
                 return await HttpResponseHelper.GetObjectFor<List<CustomerCountFromEachCity>>(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+
+        public async Task<List<OrdersCustomersOrderItemsLeftJoin>> GetOrderCustomerAndOrderItemsLeftJoin()
+        {
+            try
+            {
+                var response = await RestService
+                    .For<ICustomerApi>(await GetHttpClient())
+                    .GetOrderCustomerAndOrderItemsLeftJoin();
+                return await HttpResponseHelper.GetObjectFor<List<OrdersCustomersOrderItemsLeftJoin>>(response);
             }
             catch (Exception ex)
             {

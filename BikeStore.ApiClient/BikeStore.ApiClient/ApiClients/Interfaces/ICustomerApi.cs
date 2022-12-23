@@ -13,5 +13,7 @@ namespace BikeStore.ApiClient.ApiClients.Interfaces
     {
         [Get("/api/Customer/GetcustomersCity")]
         Task<HttpResponseMessage> GetCustomersCity();
+        [Get("/api/Customer/GetOrderCustomerAndOrderItemsLeftJoin")]
+        Task<HttpResponseMessage> GetOrderCustomerAndOrderItemsLeftJoin();
     }
 }

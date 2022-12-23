@@ -3,19 +3,65 @@
     x:Class="BikeStore.App.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sys="clr-namespace:System;assembly=netstandard"
     xmlns:local="clr-namespace:BikeStore.App"
     xmlns:views="clr-namespace:BikeStore.App.Views"
-    Shell.FlyoutBehavior="Flyout">
+    xmlns:controls="clr-namespace:BikeStore.App.Views.Controls"
+    Shell.FlyoutBehavior="Flyout"
+    x:Name="shell"
+    FlyoutBackground="white"
+    FlyoutHeaderBehavior="Fixed">
 
-    <FlyoutItem Title="Hello Xaml page">
-        <Tab>
-            <ShellContent  ContentTemplate="{DataTemplate views:DemoPage}" />
-        </Tab>
-    </FlyoutItem>
-    
+    <Shell.Resources>
+        <Style x:Key="BaseStyle"
+               TargetType="Element">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="#455A64" />
+            <Setter Property="Shell.ForegroundColor"
+                    Value="White" />
+            <Setter Property="Shell.TitleColor"
+                    Value="White" />
+            <Setter Property="Shell.DisabledColor"
+                    Value="#B4FFFFFF" />
+            <Setter Property="Shell.UnselectedColor"
+                    Value="#95FFFFFF" />
+        </Style>
+    </Shell.Resources>
+
+    <!--Flyout Header template-->
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="Black"
+                  HeightRequest="200">
+                <Image Aspect="AspectFill"
+                       Source="logo.png"
+                       Opacity="0.8" />
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    <!--Flyout Footer template-->
+    <Shell.FlyoutFooterTemplate>
+        <DataTemplate>
+            <Grid>
+                <Label Text="All Rights Reserved"
+                       HorizontalOptions="Center"
+                       Padding="10"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutFooterTemplate>
+
+
+
+
     <ShellContent
         Title="Customers from each city"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+    <ShellContent
+        Title="Customers Orders Details"
+        ContentTemplate="{DataTemplate views:CustomersOrderDetails}"
+        Route="CustomerOrderDetails" />
+
 
 </Shell>

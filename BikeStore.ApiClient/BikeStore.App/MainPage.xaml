@@ -2,15 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ViewModels="clr-namespace:BikeStore.App.ViewModels"
-             x:Class="BikeStore.App.MainPage"
-             >
+             x:Class="BikeStore.App.MainPage">
 
-    <!--<ContentPage.BindingContext>
-        <ViewModels:CustomerCountViewModel />
-    </ContentPage.BindingContext>-->
-
-            
-                    <!--<Label Text="Customers From Each City" FontSize="Default" HorizontalOptions="Center"/>-->
+   
                     <ListView ItemsSource="{Binding Customers}" SelectionMode="None" RowHeight="100">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -51,7 +45,7 @@
                         </ListView.ItemTemplate>
                     </ListView>
 
-            <!--<Button Text="Fetch data" Command="{Binding SeeTotalCustomersFromEachCity}" HeightRequest="50" HorizontalOptions="Start" Margin="10"/>-->
+           
            
 
        
