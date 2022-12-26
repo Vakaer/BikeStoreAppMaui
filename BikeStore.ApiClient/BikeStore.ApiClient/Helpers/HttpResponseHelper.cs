@@ -1,8 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using BikeStore.Data.Model;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
 namespace BikeStore.ApiClient.Helpers
@@ -20,8 +23,10 @@ namespace BikeStore.ApiClient.Helpers
             if (response.IsSuccessStatusCode)
             {
                 var serialized = await response.Content.ReadAsStringAsync();
+                JArray results = (JArray)serialized;
+                var jsonString = JsonConvert.SerializeObject(results);
+                //var resultData = JsonConvert.DeserializeObject<Root>(jsonString);
                 return JsonConvert.DeserializeObject<T>(serialized);
-
             }
             return default(T);
         }

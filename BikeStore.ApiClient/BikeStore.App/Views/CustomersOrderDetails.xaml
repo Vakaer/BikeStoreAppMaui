@@ -4,8 +4,8 @@
              x:Class="BikeStore.App.Views.CustomersOrderDetails"
              xmlns:ViewModels="clr-namespace:BikeStore.App.ViewModels"
              Title="Customers Order Details">
-    <!--<ContentPage.Content>
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">-->
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
     <ListView ItemsSource="{Binding OrdersCustomersOrderItems}" SelectionMode="None" RowHeight="150" >
         <ListView.ItemTemplate>
             <DataTemplate>
@@ -73,13 +73,12 @@
                             Text="{Binding Email}"
                             FontAttributes="Bold"
                             TextColor="DarkBlue"/>
-                        
-
                     </Grid>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
-    <!--</StackLayout>
-    </ContentPage.Content>-->
+    <ActivityIndicator x:Name="Progress" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center"/>
+    </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

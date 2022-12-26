@@ -15,10 +15,9 @@ namespace BikeStore.ApiClient.ApiClients
     {
         #region private properties
 
-        private readonly HttpClient _httpClient;
+        
         private HttpClientProvider _httpClientProvider;
-        private readonly ICustomerApi _customerApi;
-        JsonSerializerOptions _serializerOptions;
+        
 
         #endregion
 
@@ -61,6 +60,103 @@ namespace BikeStore.ApiClient.ApiClients
                     .For<ICustomerApi>(await GetHttpClient())
                     .GetOrderCustomerAndOrderItemsLeftJoin();
                 return await HttpResponseHelper.GetObjectFor<List<OrdersCustomersOrderItemsLeftJoin>>(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public async Task<List<OrderCountByProduct>> GetTotalOrdersAgainstEachProduct()
+        {
+            try
+            {
+                var response = await RestService
+                    .For<ICustomerApi>(await GetHttpClient())
+                    .GetTotalOrdersAgainstEachProduct();
+                return await HttpResponseHelper.GetObjectFor<List<OrderCountByProduct>>(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public async Task<List<ProductNamePriceForCategory>> GetProductAndCategoryRightJoin()
+        {
+            try
+            {
+                var response = await RestService
+                    .For<ICustomerApi>(await GetHttpClient())
+                    .GetProductAndCategoryRightJoin();
+                return await HttpResponseHelper.GetObjectFor<List<ProductNamePriceForCategory>>(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public async Task<List<StaffSelfJoin>> GetStaffSelfJoin()
+        {
+            try
+            {
+                var response = await RestService
+                    .For<ICustomerApi>(await GetHttpClient())
+                    .GetStaffSelfJoin();
+                return await HttpResponseHelper.GetObjectFor<List<StaffSelfJoin>>(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public async Task<List<ProductAndOrderItems>> GetProductAndOrderItemsInnerJoin()
+        {
+            try
+            {
+                var response = await RestService
+                    .For<ICustomerApi>(await GetHttpClient())
+                    .GetProductAndOrderItemsInnerJoin();
+                return await HttpResponseHelper.GetObjectFor<List<ProductAndOrderItems>>(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+
+        }
+
+        public async Task<HighestDiscount> GetHighestDiscount(int number)
+        {
+            try
+            {
+                var response = await RestService
+                    .For<ICustomerApi>(await GetHttpClient())
+                    .GetHighestDiscount(number);
+                return await HttpResponseHelper.GetObjectFor<HighestDiscount>(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public async Task<List<OrderForProductNamePriceID>> OrderForProductNamePriceID()
+        {
+            try
+            {
+                var response = await RestService
+                    .For<ICustomerApi>(await GetHttpClient())
+                    .GetProductAndOrderItemsInnerJoin();
+                return await HttpResponseHelper.GetObjectFor<List<OrderForProductNamePriceID>>(response);
             }
             catch (Exception ex)
             {

@@ -62,6 +62,23 @@
         Title="Customers Orders Details"
         ContentTemplate="{DataTemplate views:CustomersOrderDetails}"
         Route="CustomerOrderDetails" />
+    <ShellContent
+        Title="Order Count by Product Name"
+        ContentTemplate="{DataTemplate views:OrderCountPage}"
+        Route="OrderCountPage" />
+    <ShellContent
+        Title="Categories and Products"
+        ContentTemplate="{DataTemplate views:ProductNameForCategoryRightJoinPage}"
+        Route="ProductNameForCategoryRightJoinPage" />
+    <ShellContent
+        Title="Staff Self join"
+        ContentTemplate="{DataTemplate views:StaffSelfJoinPage}"
+        Route="StaffSelfJoinPage" />
+    <ShellContent
+        Title="Nth Highest Discount"
+        ContentTemplate="{DataTemplate views:HighestDiscountPage}"
+        Route="HighestDiscountPage" />
+   
 
 
 </Shell>

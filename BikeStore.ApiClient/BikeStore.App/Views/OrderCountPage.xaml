@@ -1,11 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ViewModels="clr-namespace:BikeStore.App.ViewModels"
-             x:Class="BikeStore.App.MainPage">
+             x:Class="BikeStore.App.Views.OrderCountPage"
+             xmlns:ViewModel ="clr-namespace:BikeStore.App.ViewModels"
+             Title="OrderCountPage">
     <ContentPage.Content>
-        <StackLayout>
-            <ListView ItemsSource="{Binding Customers}" SelectionMode="None" RowHeight="100">
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <ListView ItemsSource="{Binding OrderCountByProducts}" SelectionMode="None" RowHeight="100">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -26,15 +27,15 @@
                                                    WidthRequest="60"
                                                    HorizontalOptions="Center"
                                                    VerticalOptions="Center">
-                                        <Label Text="{Binding CityChar}" FontSize="Default" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                        <Label Text="{Binding ProductNameChar}" FontSize="Default" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center"/>
                                     </Frame>
                                     <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" Spacing="10">
                                         <Label
-                                                   Text="{Binding City}"
+                                                   Text="{Binding ProductName}"
                                                    FontAttributes="Italic"
                                                    VerticalOptions="End" />
                                         <Label 
-                                                   Text="{Binding Count}"
+                                                   Text="{Binding OrdersCount}"
                                                    FontAttributes="Bold"
                                                    TextColor="DarkBlue"/>
                                     </HorizontalStackLayout>
@@ -46,14 +47,7 @@
             </ListView>
             <ActivityIndicator x:Name="Progress" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center"/>
         </StackLayout>
-
-
     </ContentPage.Content>
-
-
-
-
-
-
-
+  
+    
 </ContentPage>

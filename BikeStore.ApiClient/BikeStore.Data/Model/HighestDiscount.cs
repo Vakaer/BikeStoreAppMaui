@@ -8,6 +8,6 @@ namespace BikeStore.Data.Model
 {
     public class HighestDiscount
     {
-
+        public decimal Discount { get; set; }
     }
 }

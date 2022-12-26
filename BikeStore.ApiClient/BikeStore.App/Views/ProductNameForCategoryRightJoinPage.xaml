@@ -1,11 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BikeStore.App.Views.ProductNameForCategoryRightJoinPage"
              xmlns:ViewModels="clr-namespace:BikeStore.App.ViewModels"
-             x:Class="BikeStore.App.MainPage">
+             Title="Categories and Products">
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemsSource="{Binding Customers}" SelectionMode="None" RowHeight="100">
+            <ListView ItemsSource="{Binding ProductNamePriceForCategories}" SelectionMode="None" RowHeight="150">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -26,18 +27,26 @@
                                                    WidthRequest="60"
                                                    HorizontalOptions="Center"
                                                    VerticalOptions="Center">
-                                        <Label Text="{Binding CityChar}" FontSize="Default" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                        <Label Text="{Binding CategoryNameChar}" FontSize="Default" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center"/>
                                     </Frame>
-                                    <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" Spacing="10">
+                                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" Spacing="10">
                                         <Label
-                                                   Text="{Binding City}"
+                                                   Text="{Binding CategoryName}"
                                                    FontAttributes="Italic"
                                                    VerticalOptions="End" />
                                         <Label 
-                                                   Text="{Binding Count}"
+                                                   Text="{Binding ProductName}"
                                                    FontAttributes="Bold"
                                                    TextColor="DarkBlue"/>
-                                    </HorizontalStackLayout>
+                                        <Label
+                                                   Text="{Binding ModelYear}"
+                                                   FontAttributes="Italic"
+                                                   VerticalOptions="End" />
+                                        <Label 
+                                                   Text="{Binding ListPrice}"
+                                                   FontAttributes="Bold"
+                                                   TextColor="DarkBlue"/>
+                                    </VerticalStackLayout>
                                 </HorizontalStackLayout>
                             </Grid>
                         </ViewCell>
@@ -49,11 +58,4 @@
 
 
     </ContentPage.Content>
-
-
-
-
-
-
-
 </ContentPage>

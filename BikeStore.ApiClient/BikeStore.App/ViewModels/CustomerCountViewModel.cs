@@ -33,7 +33,7 @@ namespace BikeStore.App.ViewModels
         #endregion
 
         #region Get Set
-
+      
         private ObservableCollection<CustomerCountFromEachCity> _customers = new ObservableCollection<CustomerCountFromEachCity>();
         public ObservableCollection<CustomerCountFromEachCity> Customers
         {
@@ -78,6 +78,7 @@ namespace BikeStore.App.ViewModels
         {
             try
             {
+
                 List<CustomerCountFromEachCity> customerList = await _customerApiClient.GetCustomersCity();
                 if (customerList != null)
                 {
@@ -87,6 +88,7 @@ namespace BikeStore.App.ViewModels
                         Customers.Add(item);
                          
                     }
+                    IsBusy= false;
                     Debug.WriteLine(customerList);
                 }
             }
@@ -95,10 +97,8 @@ namespace BikeStore.App.ViewModels
                 Debug.WriteLine(@"\tERROR {0}", ex.Message);
             }
 
-            //return customers;
+            
         }
-
-       
 
 
     }

@@ -16,9 +16,18 @@ namespace BikeStore.App
             builder.Services.AddSingleton<ICustomerApiClient, CustomerApiClient>();
             builder.Services.AddSingleton<CustomerCountViewModel>();
             builder.Services.AddTransient<CustomerOrderDetailsViewModel>();
+            builder.Services.AddSingleton<CustomersOrderDetails>();
             builder.Services.AddSingleton<AppShell>();
             builder.Services.AddSingleton<MainPage>();
-            builder.Services.AddSingleton<CustomersOrderDetails>();
+            builder.Services.AddSingleton<OrderCountByProductNameViewModel>();
+            builder.Services.AddSingleton<OrderCountPage>();
+            builder.Services.AddSingleton<ProductNamePriceForCategoryRightJoinViewModel>();
+            builder.Services.AddSingleton<ProductNameForCategoryRightJoinPage>();
+            builder.Services.AddSingleton<StaffSelfjoinViewmodel>();
+            builder.Services.AddSingleton<StaffSelfJoinPage>();
+            builder.Services.AddSingleton<HighestDiscountViewModel>();
+            builder.Services.AddSingleton<HighestDiscountPage>();
+
 
 
             builder

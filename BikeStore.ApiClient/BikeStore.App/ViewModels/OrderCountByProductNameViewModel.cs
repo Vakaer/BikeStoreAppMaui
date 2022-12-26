@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BikeStore.App.ViewModels
 {
-    public class CustomerOrderDetailsViewModel : BaseViewModel
+    public class OrderCountByProductNameViewModel : BaseViewModel
     {
         #region private Properties
 
@@ -19,27 +19,27 @@ namespace BikeStore.App.ViewModels
         #endregion
 
         #region constructor
-        public CustomerOrderDetailsViewModel(ICustomerApiClient customerApiClient)
+        public OrderCountByProductNameViewModel(ICustomerApiClient customerApiClient)
         {
             _customerApiClient = customerApiClient;
             GetOrderCustomerOrderItemsLeftJoin();
         }
-        
+
         #endregion
 
         #region Get Set
 
-        private ObservableCollection<OrdersCustomersOrderItemsLeftJoin> _ordersCustomersOrderItems = new ObservableCollection<OrdersCustomersOrderItemsLeftJoin>();
-        public ObservableCollection<OrdersCustomersOrderItemsLeftJoin> OrdersCustomersOrderItems
+        private ObservableCollection<OrderCountByProduct> _orderCountByProducts = new ObservableCollection<OrderCountByProduct>();
+        public ObservableCollection<OrderCountByProduct> OrderCountByProducts
         {
             get
             {
-                return _ordersCustomersOrderItems;
+                return _orderCountByProducts;
             }
             set
             {
-                _ordersCustomersOrderItems = value;
-                OnPropertyChanged(nameof(OrdersCustomersOrderItems));
+                _orderCountByProducts = value;
+                OnPropertyChanged(nameof(OrderCountByProducts));
             }
         }
 
@@ -50,11 +50,11 @@ namespace BikeStore.App.ViewModels
         {
             try
             {
-                List<OrdersCustomersOrderItemsLeftJoin> leftJoinlist = await _customerApiClient.GetOrderCustomerAndOrderItemsLeftJoin();
+                List<OrderCountByProduct> leftJoinlist = await _customerApiClient.GetTotalOrdersAgainstEachProduct();
                 foreach (var item in leftJoinlist)
                 {
-                    item.FullNameChar = item.FullName.Substring(0, 1);
-                    OrdersCustomersOrderItems.Add(item);
+                    item.ProductNameChar = item.ProductName.Substring(0, 1);
+                    OrderCountByProducts.Add(item);
 
                 }
                 IsBusy= false;
