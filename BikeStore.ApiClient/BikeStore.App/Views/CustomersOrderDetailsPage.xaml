@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BikeStore.App.Views.CustomersOrderDetails"
+             x:Class="BikeStore.App.Views.CustomersOrderDetailsPage"
              xmlns:ViewModels="clr-namespace:BikeStore.App.ViewModels"
              Title="Customers Order Details">
     <ContentPage.Content>
@@ -29,7 +29,8 @@
                                 HeightRequest="60"
                                 WidthRequest="60"
                                 VerticalOptions="Center"
-                                Grid.RowSpan="2">
+                                Grid.RowSpan="2"
+                                Grid.Column="1">
                             
                                 <Label Text="{Binding FullNameChar}" 
                                        FontSize="Default" 

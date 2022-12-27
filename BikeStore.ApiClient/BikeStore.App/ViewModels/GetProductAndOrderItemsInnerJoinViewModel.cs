@@ -66,6 +66,7 @@ namespace BikeStore.App.ViewModels
                 {
                     foreach (var item in productList)
                     {
+                        item.ProductNameChar = item.ProductName.Substring(0, 1);
                         ProductAndOrderItems.Add(item);
 
                     }

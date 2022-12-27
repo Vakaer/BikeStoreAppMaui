@@ -16,7 +16,7 @@ namespace BikeStore.App
         void RegisterRoutes()
         {
             Routes.Add("mainpage", typeof(MainPage));
-            Routes.Add("customerorderdetails", typeof(CustomersOrderDetails));
+            Routes.Add("customerorderdetails", typeof(CustomersOrderDetailsPage));
             foreach (var item in Routes)
             {
                 Routing.RegisterRoute(item.Key, item.Value);

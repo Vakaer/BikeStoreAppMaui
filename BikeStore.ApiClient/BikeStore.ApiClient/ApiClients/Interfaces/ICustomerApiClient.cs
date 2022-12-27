@@ -16,7 +16,6 @@ namespace BikeStore.ApiClient.ApiClients.Interfaces
         Task<List<ProductNamePriceForCategory>> GetProductAndCategoryRightJoin();
         Task<List<StaffSelfJoin>> GetStaffSelfJoin();
         Task<List<ProductAndOrderItems>> GetProductAndOrderItemsInnerJoin();
-        Task<List<HighestDiscount>> GetHighestDiscount(int number);
         Task<List<decimal>> GetHighestDiscountDecimal(int number);
         Task<List<OrderForProductNamePriceID>> OrderForProductNamePriceID();
     }

@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:sys="clr-namespace:System;assembly=netstandard"
     xmlns:local="clr-namespace:BikeStore.App"
-    xmlns:views="clr-namespace:BikeStore.App.Views"
+    xmlns:Views="clr-namespace:BikeStore.App.Views"
     xmlns:controls="clr-namespace:BikeStore.App.Views.Controls"
     Shell.FlyoutBehavior="Flyout"
     x:Name="shell"
@@ -56,31 +56,43 @@
 
     <ShellContent
         Title="Customers from each city"
+        Icon="icon.png"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
     <ShellContent
         Title="Customers Orders Details"
-        ContentTemplate="{DataTemplate views:CustomersOrderDetails}"
+        Icon="icon.png"
+        ContentTemplate="{DataTemplate Views:CustomersOrderDetailsPage}"
         Route="CustomerOrderDetails" />
     <ShellContent
         Title="Order Count by Product Name"
-        ContentTemplate="{DataTemplate views:OrderCountPage}"
+        Icon="icon.png"
+        ContentTemplate="{DataTemplate Views:OrderCountPage}"
         Route="OrderCountPage" />
     <ShellContent
         Title="Categories and Products"
-        ContentTemplate="{DataTemplate views:ProductNameForCategoryRightJoinPage}"
+        Icon="icon.png"
+        ContentTemplate="{DataTemplate Views:ProductNameForCategoryRightJoinPage}"
         Route="ProductNameForCategoryRightJoinPage" />
     <ShellContent
         Title="Staff Self join"
-        ContentTemplate="{DataTemplate views:StaffSelfJoinPage}"
+        Icon="icon.png"
+        ContentTemplate="{DataTemplate Views:StaffSelfJoinPage}"
         Route="StaffSelfJoinPage" />
     <ShellContent
+        Title="Orders for Each product"
+        Icon="icon.png"
+        ContentTemplate="{DataTemplate Views:GetProductAndOrderItemsInnerJoinPage}"
+        Route="GetProductAndOrderItemsInnerJoinPage" />
+    <ShellContent
         Title="Nth Highest Discount"
-        ContentTemplate="{DataTemplate views:HighestDiscountPage}"
+        Icon="icon.png"
+        ContentTemplate="{DataTemplate Views:HighestDiscountPage}"
         Route="HighestDiscountPage" />
     <ShellContent
         Title="Total Orders count for Product"
-        ContentTemplate="{DataTemplate views:OrderForProductNamePriceIDPage}"
+        Icon="icon.png"
+        ContentTemplate="{DataTemplate Views:OrderForProductNamePriceIDPage}"
         Route="OrderForProductNamePriceIDPage" />
 
 

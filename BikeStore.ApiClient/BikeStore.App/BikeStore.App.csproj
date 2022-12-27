@@ -59,13 +59,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\Controls\FlyoutHeader.xaml">
+	  <Compile Update="Views\CustomersOrderDetailsPage.xaml.cs">
+	    <DependentUpon>CustomersOrderDetailsPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\GetProductAndOrderItemsInnerJoinPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\CustomersOrderDetails.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\DemoPage.xaml">
+	  <MauiXaml Update="Views\CustomersOrderDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\HighestDiscountPage.xaml">

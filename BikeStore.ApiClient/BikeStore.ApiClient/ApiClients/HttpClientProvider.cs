@@ -19,7 +19,7 @@ namespace BikeStore.ApiClient.ApiClients
         #region Cosntructor
         public HttpClientProvider() { }
         #endregion
-
+        //Gets the Base URL on every Http Call
         public async Task<HttpClient> GetHttpClient()
         {
             var httpClient = new HttpClient();

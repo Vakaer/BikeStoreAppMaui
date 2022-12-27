@@ -35,7 +35,7 @@ namespace BikeStore.ApiClient.ApiClients
 
         #endregion
 
-
+        //Get Customers From each city - Method - 1
         public async Task<List<CustomerCountFromEachCity>> GetCustomersCity()
         {
             try
@@ -52,7 +52,7 @@ namespace BikeStore.ApiClient.ApiClients
             }
         }
 
-
+        //Get Orders Customers and Order Items Left join - Method - 2
         public async Task<List<OrdersCustomersOrderItemsLeftJoin>> GetOrderCustomerAndOrderItemsLeftJoin()
         {
             try
@@ -69,6 +69,7 @@ namespace BikeStore.ApiClient.ApiClients
             }
         }
 
+        //Get Orders Count for Each Product - Method - 3
         public async Task<List<OrderCountByProduct>> GetTotalOrdersAgainstEachProduct()
         {
             try
@@ -85,6 +86,7 @@ namespace BikeStore.ApiClient.ApiClients
             }
         }
 
+        //Get Categories and respective Products Right Join - Method - 4
         public async Task<List<ProductNamePriceForCategory>> GetProductAndCategoryRightJoin()
         {
             try
@@ -101,6 +103,7 @@ namespace BikeStore.ApiClient.ApiClients
             }
         }
 
+        //Get Staff and assigned Manager name to each staf member Self join - Method - 5
         public async Task<List<StaffSelfJoin>> GetStaffSelfJoin()
         {
             try
@@ -117,6 +120,7 @@ namespace BikeStore.ApiClient.ApiClients
             }
         }
 
+        //Get Product ID for Each Order Inner join - Method - 6
         public async Task<List<ProductAndOrderItems>> GetProductAndOrderItemsInnerJoin()
         {
             try
@@ -133,39 +137,7 @@ namespace BikeStore.ApiClient.ApiClients
             }
 
         }
-
-        public async Task<List<HighestDiscount>> GetHighestDiscount(int number)
-        {
-            try
-            {
-                var response = await RestService
-                    .For<ICustomerApi>(await GetHttpClient())
-                    .GetHighestDiscount(number);
-                return await HttpResponseHelper.Deserialize<HighestDiscount>(response);
-                
-            }
-            catch (Exception ex)
-            { 
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-        }
-
-        public async Task<List<OrderForProductNamePriceID>> OrderForProductNamePriceID()
-        {
-            try
-            {
-                var response = await RestService
-                    .For<ICustomerApi>(await GetHttpClient())
-                    .OrderForProductNamePriceID();
-                return await HttpResponseHelper.GetObjectFor<List<OrderForProductNamePriceID>>(response);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-        }
+        //Get NTH Highest Discount - Method - 7
 
         public async Task<List<decimal>> GetHighestDiscountDecimal(int number)
         {
@@ -183,5 +155,24 @@ namespace BikeStore.ApiClient.ApiClients
                 return null;
             }
         }
+        
+        //Get Total orders Against Each Product - Method - 8
+        public async Task<List<OrderForProductNamePriceID>> OrderForProductNamePriceID()
+        {
+            try
+            {
+                var response = await RestService
+                    .For<ICustomerApi>(await GetHttpClient())
+                    .OrderForProductNamePriceID();
+                return await HttpResponseHelper.GetObjectFor<List<OrderForProductNamePriceID>>(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+       
     }
 }
