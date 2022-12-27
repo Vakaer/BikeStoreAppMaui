@@ -4,45 +4,42 @@
              xmlns:ViewModels="clr-namespace:BikeStore.App.ViewModels"
              x:Class="BikeStore.App.Views.HighestDiscountPage"
              Title="HighestDiscountPage">
-    
+
     <ContentPage.Content>
         <StackLayout>
-           
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <HorizontalStackLayout Margin="20">
-                                    <!--<Frame 
-                                                   Margin="10"
-                                                   BorderColor="Black"
-                                                   CornerRadius="50"
-                                                   HeightRequest="60"
-                                                   WidthRequest="60"
-                                                   HorizontalOptions="Center"
-                                                   VerticalOptions="Center">
-                                        <Label Text="D" FontSize="Default" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center"/>
-                                    </Frame>-->
-                                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" Spacing="10">
-                                        <Entry
-                                                   Text="{Binding HighestDiscount}"
-                                                   Placeholder="Enter nth Highest discount"
-                                                   Keyboard="Numeric"
-                                                   HorizontalOptions="FillAndExpand"/>
-                                        <Label 
-                                                   Text="{Binding HighestDiscountValue}"
-                                                   FontAttributes="Bold"
-                                                   TextColor="DarkBlue"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <HorizontalStackLayout Margin="20">
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" Spacing="10">
+                        <Entry
+                                    Text="{Binding HighestDiscount}"
+                                    Placeholder="Enter nth Highest discount"
+                                    Keyboard="Numeric"
+                                    HorizontalOptions="FillAndExpand"/>
                         <Button Text="Get Discount"
-                                Command="{Binding GetNthHighestDiscount}"/>
+                        Command="{Binding GetNthHighestDiscount}"/>
+                        <Label Text="{Binding HighestDiscountValue}"/>
                     </VerticalStackLayout>
-                                </HorizontalStackLayout>
-                            </Grid>
-                       
+                    <!--<ListView ItemsSource="{Binding HighestDiscountValue}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Label Text="{Binding Discount}"/>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        
+                    </ListView>-->
+                </HorizontalStackLayout>
+            </Grid>
+
             <ActivityIndicator x:Name="Progress" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center"/>
         </StackLayout>
 

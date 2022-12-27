@@ -16,6 +16,7 @@ namespace BikeStore.App.ViewModels
         #region private Properties
 
         private ICustomerApiClient _customerApiClient;
+        public List<decimal> Discount { get; set; }
 
         #endregion
 
@@ -40,8 +41,8 @@ namespace BikeStore.App.ViewModels
             }
         }
         //for label
-        private HighestDiscount _highestDiscounts;
-        public HighestDiscount HighestDiscountValue
+        private decimal _highestDiscounts = new decimal();
+        public decimal HighestDiscountValue
         {
             get
             {
@@ -70,12 +71,16 @@ namespace BikeStore.App.ViewModels
             try
             {
 
-                HighestDiscount discounts = await _customerApiClient.GetHighestDiscount(HighestDiscount);
+                List<decimal> discounts = await _customerApiClient.GetHighestDiscountDecimal(HighestDiscount);
                 IsBusy = false;
                 if (discounts != null)
                 {
-                    HighestDiscountValue.Discount = discounts.Discount;
-                    
+                    ObservableCollection<decimal> collection = new ObservableCollection<decimal>(discounts);
+                    //foreach (var item in discounts)
+                    //{
+                    //    HighestDiscountValue.Add(Decimal.Parse(item));
+                    //};
+                    HighestDiscountValue = collection[0];
                     Debug.WriteLine(discounts);
                 }
             }

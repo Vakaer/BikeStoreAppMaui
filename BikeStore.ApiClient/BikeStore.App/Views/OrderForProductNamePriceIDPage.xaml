@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModels="clr-namespace:BikeStore.App.ViewModels"
+             x:Class="BikeStore.App.Views.OrderForProductNamePriceIDPage"
+             Title="OrderForProductNamePriceIDPage">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{Binding OrderForProducts}" SelectionMode="None" RowHeight="100">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <HorizontalStackLayout Margin="20">
+                                    <Frame 
+                                                   Margin="10"
+                                                   BorderColor="Black"
+                                                   CornerRadius="50"
+                                                   HeightRequest="60"
+                                                   WidthRequest="60"
+                                                   HorizontalOptions="Center"
+                                                   VerticalOptions="Center">
+                                        <Label Text="{Binding ProductId}" FontSize="Default" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                    </Frame>
+                                    <VerticalStackLayout Grid.RowSpan="2" Grid.Column="1">
+                                        <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" Spacing="3">
+                                            <Label
+                                                   Text="{Binding ProductName}"
+                                                   FontAttributes="Italic"
+                                                   VerticalOptions="End" />
+                                            <Label 
+                                                   Text="{Binding ListPrice}"
+                                                   FontAttributes="Bold"
+                                                   TextColor="DarkBlue"/>
+                                            <Label 
+                                                   Text="$"
+                                                   FontAttributes="Bold"
+                                                   TextColor="DarkBlue"/>
+                                        </HorizontalStackLayout>
+                                        <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Start" Grid.Column="1" Grid.Row="1" Spacing="10">
+
+                                            <Label 
+                                                   Text="Total Orders:"
+                                                   FontAttributes="Bold"
+                                                   TextColor="DarkBlue"/>
+                                            <Label
+                                                   Text="{Binding OrderCount}"
+                                                   FontAttributes="Italic"
+                                                   VerticalOptions="End" />
+
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+                                    
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ActivityIndicator x:Name="Progress" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center"/>
+        </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>

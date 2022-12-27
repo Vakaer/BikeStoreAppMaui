@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Nodes;
@@ -23,12 +24,22 @@ namespace BikeStore.ApiClient.Helpers
             if (response.IsSuccessStatusCode)
             {
                 var serialized = await response.Content.ReadAsStringAsync();
-                JArray results = (JArray)serialized;
-                var jsonString = JsonConvert.SerializeObject(results);
-                //var resultData = JsonConvert.DeserializeObject<Root>(jsonString);
+                
                 return JsonConvert.DeserializeObject<T>(serialized);
             }
             return default(T);
+        }
+        public static async Task<List<T>> Deserialize<T>(HttpResponseMessage response)
+        {
+            if (response.IsSuccessStatusCode)
+            {
+                var serialized = await response.Content.ReadAsStringAsync();
+                
+                return JsonConvert.DeserializeObject<List<T>>(serialized);
+            }
+
+
+            return default;
         }
         public static async Task<string> GetAsString(HttpResponseMessage response)
         {

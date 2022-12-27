@@ -1,6 +1,7 @@
 ﻿using BikeStore.ApiClient.ApiClients.Interfaces;
 using BikeStore.ApiClient.Helpers;
 using BikeStore.Data.Model;
+using Newtonsoft.Json.Linq;
 using Refit;
 using System;
 using System.Collections.Generic;
@@ -133,17 +134,18 @@ namespace BikeStore.ApiClient.ApiClients
 
         }
 
-        public async Task<HighestDiscount> GetHighestDiscount(int number)
+        public async Task<List<HighestDiscount>> GetHighestDiscount(int number)
         {
             try
             {
                 var response = await RestService
                     .For<ICustomerApi>(await GetHttpClient())
                     .GetHighestDiscount(number);
-                return await HttpResponseHelper.GetObjectFor<HighestDiscount>(response);
+                return await HttpResponseHelper.Deserialize<HighestDiscount>(response);
+                
             }
             catch (Exception ex)
-            {
+            { 
                 Console.WriteLine(ex.Message);
                 return null;
             }
@@ -155,8 +157,25 @@ namespace BikeStore.ApiClient.ApiClients
             {
                 var response = await RestService
                     .For<ICustomerApi>(await GetHttpClient())
-                    .GetProductAndOrderItemsInnerJoin();
+                    .OrderForProductNamePriceID();
                 return await HttpResponseHelper.GetObjectFor<List<OrderForProductNamePriceID>>(response);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public async Task<List<decimal>> GetHighestDiscountDecimal(int number)
+        {
+            try
+            {
+                var response = await RestService
+                    .For<ICustomerApi>(await GetHttpClient())
+                    .GetHighestDiscount(number);
+                return await HttpResponseHelper.Deserialize<decimal>(response);
+
             }
             catch (Exception ex)
             {

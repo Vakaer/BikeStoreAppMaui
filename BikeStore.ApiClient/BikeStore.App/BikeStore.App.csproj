@@ -74,6 +74,9 @@
 	  <MauiXaml Update="Views\OrderCountPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\OrderForProductNamePriceIDPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\ProductNameForCategoryRightJoinPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

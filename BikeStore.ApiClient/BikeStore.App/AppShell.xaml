@@ -78,7 +78,11 @@
         Title="Nth Highest Discount"
         ContentTemplate="{DataTemplate views:HighestDiscountPage}"
         Route="HighestDiscountPage" />
-   
+    <ShellContent
+        Title="Total Orders count for Product"
+        ContentTemplate="{DataTemplate views:OrderForProductNamePriceIDPage}"
+        Route="OrderForProductNamePriceIDPage" />
+
 
 
 </Shell>

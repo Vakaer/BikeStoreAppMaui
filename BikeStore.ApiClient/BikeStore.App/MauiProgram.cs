@@ -27,6 +27,8 @@ namespace BikeStore.App
             builder.Services.AddSingleton<StaffSelfJoinPage>();
             builder.Services.AddSingleton<HighestDiscountViewModel>();
             builder.Services.AddSingleton<HighestDiscountPage>();
+            builder.Services.AddSingleton<OrderForProductNamePriceIDViewModel>();
+            builder.Services.AddSingleton<OrderForProductNamePriceIDPage>();
 
 
 

@@ -15,7 +15,7 @@ namespace BikeStore.ApiClient.ApiClients.Interfaces
         Task<HttpResponseMessage> GetCustomersCity();
         [Get("/api/Customer/GetOrderCustomerAndOrderItemsLeftJoin")]
         Task<HttpResponseMessage> GetOrderCustomerAndOrderItemsLeftJoin();
-        [Get("​/api​/Customer​/GetTotalOrdersAgainstEachProduct")]
+        [Get("/api/Customer/GetTotalOrdersAgainstEachProduct")]
         Task<HttpResponseMessage> GetTotalOrdersAgainstEachProduct();
         [Get("/api/Customer/GetProductAndCategoryRightJoin")]
         Task<HttpResponseMessage> GetProductAndCategoryRightJoin();
