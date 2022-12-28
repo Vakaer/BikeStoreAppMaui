@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:ViewModels="clr-namespace:BikeStore.App.ViewModels"
              x:Class="BikeStore.App.Views.HighestDiscountPage"
              Title="HighestDiscountPage">
+    <ContentPage.Resources>
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
+        <Style x:Key="ValidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Green" />
+        </Style>
+    </ContentPage.Resources>
 
+    
     <ContentPage.Content>
         <StackLayout>
 
-            <Grid>
+            <Grid HorizontalOptions="CenterAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
@@ -23,23 +33,15 @@
                                     Placeholder="Enter nth Highest discount"
                                     Keyboard="Numeric"
                                     HorizontalOptions="FillAndExpand"/>
+                        
                         <Button Text="Get Discount"
                         Command="{Binding GetNthHighestDiscount}"/>
-                        <Label Text="{Binding HighestDiscountValue}"/>
+                        <Label Text="{Binding HighestDiscountValue}" FontSize="Large"/>
                     </VerticalStackLayout>
-                    <!--<ListView ItemsSource="{Binding HighestDiscountValue}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Label Text="{Binding Discount}"/>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                        
-                    </ListView>-->
+                   
                 </HorizontalStackLayout>
             </Grid>
-
+            
             <ActivityIndicator x:Name="Progress" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" VerticalOptions="Center" HorizontalOptions="Center"/>
         </StackLayout>
 

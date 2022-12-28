@@ -60,7 +60,7 @@ namespace BikeStore.App.ViewModels
         {
             try
             {
-
+                IsBusy = true;
                 List<StaffSelfJoin> staffList = await _customerApiClient.GetStaffSelfJoin();
                 if (staffList != null)
                 {

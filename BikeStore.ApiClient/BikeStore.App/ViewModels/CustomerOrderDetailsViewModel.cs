@@ -50,6 +50,7 @@ namespace BikeStore.App.ViewModels
         {
             try
             {
+                IsBusy = true;
                 List<OrdersCustomersOrderItemsLeftJoin> leftJoinlist = await _customerApiClient.GetOrderCustomerAndOrderItemsLeftJoin();
                 foreach (var item in leftJoinlist)
                 {

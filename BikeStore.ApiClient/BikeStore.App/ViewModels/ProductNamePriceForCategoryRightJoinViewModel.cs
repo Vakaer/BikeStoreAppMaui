@@ -60,7 +60,7 @@ namespace BikeStore.App.ViewModels
         {
             try
             {
-
+                IsBusy = true;
                 List<ProductNamePriceForCategory> categoryList = await _customerApiClient.GetProductAndCategoryRightJoin();
                 if (categoryList != null)
                 {

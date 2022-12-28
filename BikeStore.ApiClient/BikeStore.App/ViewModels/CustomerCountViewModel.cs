@@ -78,7 +78,7 @@ namespace BikeStore.App.ViewModels
         {
             try
             {
-
+                IsBusy = true;
                 List<CustomerCountFromEachCity> customerList = await _customerApiClient.GetCustomersCity();
                 if (customerList != null)
                 {
@@ -88,7 +88,7 @@ namespace BikeStore.App.ViewModels
                         Customers.Add(item);
                          
                     }
-                    IsBusy= false;
+                    IsBusy = false;
                     Debug.WriteLine(customerList);
                 }
             }

@@ -70,19 +70,16 @@ namespace BikeStore.App.ViewModels
         {
             try
             {
-
+                IsBusy = true;
                 List<decimal> discounts = await _customerApiClient.GetHighestDiscountDecimal(HighestDiscount);
-                IsBusy = false;
+                
                 if (discounts != null)
                 {
                     ObservableCollection<decimal> collection = new ObservableCollection<decimal>(discounts);
-                    //foreach (var item in discounts)
-                    //{
-                    //    HighestDiscountValue.Add(Decimal.Parse(item));
-                    //};
                     HighestDiscountValue = collection[0];
                     Debug.WriteLine(discounts);
                 }
+                IsBusy = false;
             }
             catch (Exception ex)
             {

@@ -60,7 +60,7 @@ namespace BikeStore.App.ViewModels
         {
             try
             {
-
+                IsBusy = true;
                 List<ProductAndOrderItems> productList = await _customerApiClient.GetProductAndOrderItemsInnerJoin();
                 if (productList != null)
                 {

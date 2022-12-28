@@ -10,7 +10,7 @@ namespace BikeStore.App.ViewModels
     public  class BaseViewModel: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private bool _isBusy = true;
+        private bool _isBusy;
         public bool IsBusy
         {
             get

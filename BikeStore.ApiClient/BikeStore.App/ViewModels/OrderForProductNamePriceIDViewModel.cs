@@ -60,7 +60,7 @@ namespace BikeStore.App.ViewModels
         {
             try
             {
-
+                IsBusy = true;
                 List<OrderForProductNamePriceID> orderList = await _customerApiClient.OrderForProductNamePriceID();
                 if (orderList != null)
                 {
